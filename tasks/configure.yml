@@ -35,7 +35,7 @@
     path: "{{ node_exporter_textfile_dir }}"
     state: directory
     owner: "{{ node_exporter_system_user }}"
-    group: "{{ node_exporter_system_group }}"
+    group: "{{ node_exporter_system_group.split(',') | first  }}"
     recurse: true
     mode: u+rwX,g+rwX,o=rX
   when: node_exporter_textfile_dir | length > 0
